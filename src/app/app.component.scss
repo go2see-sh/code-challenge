@@ -1,0 +1,21 @@
+.application {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    mat-card {
+        width: 50%;
+        margin-bottom: 30px;
+
+        &:first-child {
+            margin-right: 30px;
+        }
+    }
+
+    ::ng-deep {
+        .syntax-error {
+            font-size: 14px !important;
+            color: var(--mocha-test-fail-color) !important;
+        }
+    }
+}

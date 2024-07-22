@@ -1,0 +1,74 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+#mocha {
+    margin: 0 !important;
+}
+
+#mocha-stats {
+    position: relative !important;
+    top: 0 !important;
+    right: 0 !important;
+    font-size: 16px !important;
+
+    .progress-contain {
+        display: none !important;
+    }
+
+    li {
+        margin: 0 10px 0 0 !important;
+        padding: 0 !important;
+        pointer-events: none;
+    }
+}
+
+#mocha-report {
+    .suite {
+        margin: 0 !important;
+        h1 {
+            pointer-events: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        h2 {
+            font-size: 16px !important;
+            pointer-events: none;
+            a {
+                display: none !important;
+            }
+        }
+
+        .test {
+            margin-left: 0 !important;
+            margin-top: 10px !important;
+
+            &.pass::before,
+            &.fail::before {
+                margin-top: 2px;
+            }
+    
+            .error {
+                margin: 5px 0 0 0 !important;
+            }
+
+            pre.error {
+                max-width: 100% !important;
+            }
+        }
+    }
+}
+
+.cm-focused {
+    outline: none !important;
+}
+
+.mdc-text-field--filled {
+    background-color: var(--mdc-elevated-card-container-color) !important;
+}
