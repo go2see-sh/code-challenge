@@ -107,7 +107,9 @@ export class AppComponent implements AfterViewInit {
   }
 
   private provideMailText(suite: TestSuite) {
-    return `subject=Code-Challenge ${suite.title}&body=Meine Lösung\n\n${this.editorView.state.doc.toString()}`;
+    const subject = encodeURIComponent(`Code-Challenge ${suite.title}`);
+    const body = encodeURIComponent(`Meine Lösung\n\n${this.editorView.state.doc.toString()}`);
+    return `subject=${subject}&body=${body}`;
   }
 
   protected provide() {
