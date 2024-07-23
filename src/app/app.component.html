@@ -37,12 +37,12 @@
   </div>
 </div>
 <div class="container d-flex justify-content-end">
-  @if(failures() === 0) {
-
+  @if(failures() === 0 && !syntaxError()) {
+    <button
+      mat-button 
+      mat-flat-button
+      class="mb-4"
+      (click)="provide()"
+    >Ergebnis mitteilen</button>
   }
-  <button
-    mat-button 
-    mat-flat-button
-    class="mb-4"
-  >Ergebnis mitteilen</button>
 </div>

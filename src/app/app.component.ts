@@ -45,6 +45,7 @@ export class AppComponent implements AfterViewInit {
   private editorView!: EditorView;
 
   protected failures = signal<number>(0);
+  protected syntaxError = signal<boolean>(false);
 
   protected selectionChange(event: MatSelectChange): void {
     this.setSuite(event.value);
@@ -88,7 +89,9 @@ export class AppComponent implements AfterViewInit {
         try {
           (0, eval)(func);
           this.setTests();
+          this.syntaxError.set(false);
         } catch (e: any) {
+          this.syntaxError.set(true);
           this.tester.nativeElement.innerHTML = `<div class="syntax-error">${e.toString()}</div>`;
         }
 
@@ -101,5 +104,15 @@ export class AppComponent implements AfterViewInit {
     });
 
     this.setSuite(this.suiteControl.value!);
+  }
+
+  private provideMailText(suite: TestSuite) {
+    return `subject=Code-Challenge ${suite.title}&body=Meine Lösung\n\n${this.editorView.state.doc.toString()}`;
+  }
+
+  protected provide() {
+    const a = document.createElement('a');
+    a.href = `mailto: test@test.de?${this.provideMailText(this.suiteControl.value!)}`;
+    a.click();
   }
 }
